@@ -1,6 +1,6 @@
 {
-    "name": "marvinklemp/kafka-php",
-    "description": "Kafka PHP client",
+    "name": "marvinklemp/kafka-adapter",
+    "description": "Kafka PHP Adapter",
     "license": "MIT",
     "authors": [
         {
@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MarvinKlemp\\Kafka\\": "src/"
+            "MarvinKlemp\\KafkaAdapter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MarvinKlemp\\Kafka\\Tests\\": "tests/"
+            "MarvinKlemp\\KafkaAdapter\\Tests\\": "tests/"
         }
     }
 }
