@@ -2,6 +2,6 @@
 
 namespace MarvinKlemp\KafkaAdapter\Consumer;
 
-class Consumer
+class BrokerConfiguration
 {
 }
