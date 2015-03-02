@@ -11,7 +11,7 @@ class ProducerConfigTest extends \PHPUnit_Framework_TestCase
     {
         $config = new ProducerConfiguration();
 
-        $this->assertInstanceOf(ProducerConfiguration::class, $config);
+        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Producer\ProducerConfiguration", $config);
     }
 
     public function test_it_should_hold_the_default_configuration_set()
@@ -48,4 +48,4 @@ class ProducerConfigTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException("InvalidArgumentException");
         $config->set("x", 100);
     }
-} 
+}

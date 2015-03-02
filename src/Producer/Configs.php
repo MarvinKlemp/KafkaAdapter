@@ -48,4 +48,4 @@ final class Configs
      *
      */
     const MAX_REQUEST_SIZE_CONFIG = "MAX_REQUEST_SIZE_CONFIG";
-} 
+}
