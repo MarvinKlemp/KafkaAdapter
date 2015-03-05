@@ -1,8 +1,6 @@
 <?php
 
-namespace MarvinKlemp\KafkaAdapter\Producer;
-
-use MarvinKlemp\KafkaAdapter\PartitionInfo;
+namespace MarvinKlemp\KafkaAdapter\Client\Producer;
 
 interface ProducerInterface
 {

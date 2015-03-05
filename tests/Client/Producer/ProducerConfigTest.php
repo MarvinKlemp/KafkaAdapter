@@ -1,8 +1,8 @@
 <?php
 
-namespace MarvinKlemp\KafkaAdapter\Tests\Producer;
+namespace MarvinKlemp\KafkaAdapter\Tests\Client\Producer;
 
-use MarvinKlemp\KafkaAdapter\Producer\ProducerConfiguration;
+use MarvinKlemp\KafkaAdapter\Client\Producer\ProducerConfiguration;
 
 class ProducerConfigTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,7 +10,7 @@ class ProducerConfigTest extends \PHPUnit_Framework_TestCase
     {
         $config = new ProducerConfiguration();
 
-        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Producer\ProducerConfiguration", $config);
+        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Client\Producer\ProducerConfiguration", $config);
     }
 
     public function test_it_should_hold_the_default_configuration_set()

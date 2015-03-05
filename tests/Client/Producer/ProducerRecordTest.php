@@ -1,8 +1,8 @@
 <?php
 
-namespace MarvinKlemp\KafkaAdapter\Tests\Producer;
+namespace MarvinKlemp\KafkaAdapter\Tests\Client\Producer;
 
-use MarvinKlemp\KafkaAdapter\Producer\ProducerRecord;
+use MarvinKlemp\KafkaAdapter\Client\Producer\ProducerRecord;
 
 class ProducerRecordTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,21 +10,21 @@ class ProducerRecordTest extends \PHPUnit_Framework_TestCase
     {
         $record = ProducerRecord::createRecord("topic", "key", "data");
 
-        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Producer\ProducerRecord", $record);
+        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Client\Producer\ProducerRecord", $record);
     }
 
     public function test_it_should_be_initialized_using_create_record_with_partition()
     {
         $record = ProducerRecord::createRecordWithoutKey("topic", 2, "key", "data");
 
-        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Producer\ProducerRecord", $record);
+        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Client\Producer\ProducerRecord", $record);
     }
 
     public function test_it_should_be_initialized_using_create_record_without_key()
     {
         $record = ProducerRecord::createRecordWithoutKey("topic", "data");
 
-        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Producer\ProducerRecord", $record);
+        $this->assertInstanceOf("MarvinKlemp\KafkaAdapter\Client\Producer\ProducerRecord", $record);
         $this->assertSame("", $record->key());
     }
 

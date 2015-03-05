@@ -1,8 +1,8 @@
 <?php
 
-namespace MarvinKlemp\KafkaAdapter\Producer;
+namespace MarvinKlemp\KafkaAdapter\Client\Producer;
 
-use MarvinKlemp\KafkaAdapter\AbstractConfiguration;
+use MarvinKlemp\KafkaAdapter\Common\AbstractConfiguration;
 
 class ProducerConfiguration extends AbstractConfiguration
 {

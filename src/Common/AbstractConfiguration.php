@@ -1,6 +1,6 @@
 <?php
 
-namespace MarvinKlemp\KafkaAdapter;
+namespace MarvinKlemp\KafkaAdapter\Common;
 
 abstract class AbstractConfiguration
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MarvinKlemp\KafkaAdapter\Producer;
+namespace MarvinKlemp\KafkaAdapter\Client\Producer;
 
 class Producer implements ProducerInterface
 {
