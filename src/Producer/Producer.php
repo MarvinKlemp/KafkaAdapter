@@ -6,6 +6,5 @@ class Producer implements ProducerInterface
 {
     public function send(ProducerRecord $record, callable $callback = null)
     {
-        // TODO: Implement send() method.
     }
 }
