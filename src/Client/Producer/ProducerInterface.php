@@ -11,5 +11,5 @@ interface ProducerInterface
      * @param  callable       $callback
      * @return RecordMetadata
      */
-    public function send(ProducerRecord $record, callable $callback = null);
+    public function send(ProducerRecord $aRecord, callable $aCallback = null);
 }
