@@ -7,8 +7,8 @@ interface ProducerInterface
     /**
      * Sends a record
      *
-     * @param  ProducerRecord $record
-     * @param  callable       $callback
+     * @param  ProducerRecord $aRecord
+     * @param  callable       $aCallback
      * @return RecordMetadata
      */
     public function send(ProducerRecord $aRecord, callable $aCallback = null);

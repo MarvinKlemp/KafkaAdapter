@@ -26,52 +26,87 @@ class Cluster
     }
 
     /**
-     * @param $aTopic
-     * @return PartitionInfo[]
-     * @throws \RuntimeException
+     * @param  TopicPartition            $aTopicPartition
+     * @return PartitionInfo
+     * @throws \InvalidArgumentException
      */
-    public function partitionsForTopic($aTopic)
-    {
-        if (!isset($this->cluster[$aTopic])) {
-            throw new \RuntimeException(sprintf("Unknown Topic \"%s\"", $aTopic));
-        }
-
-        return $this->cluster[$aTopic];
-    }
-
-    public function partitionsForNode()
-    {
-    }
-
-    public function partition()
-    {
-    }
-
-    /**
-     * @param  TopicPartition $aTopicPartition
-     * @return Node
-     */
-    public function leaderFor(TopicPartition $aTopicPartition)
+    public function partitionInfoFor(TopicPartition $aTopicPartition)
     {
         $topic = $aTopicPartition->topic();
         $partition = $aTopicPartition->partition();
 
-        if (!isset($this->cluster[$topic])) {
-            throw new \RuntimeException(
-                sprintf("Unknown Topic \"%s\"", $topic)
-            );
+        $this->knownTopic($topic);
+        $this->knownPartition($topic, $partition);
+
+        return $this->cluster[$topic][$partition];
+    }
+
+    /**
+     * @param $aTopic
+     * @return PartitionInfo[]
+     * @throws \InvalidArgumentException
+     */
+    public function partitionsForTopic($aTopic)
+    {
+        $this->knownTopic($aTopic);
+
+        return $this->cluster[$aTopic];
+    }
+
+    /**
+     * @param Node $aNode
+     *
+     * return PartitionInfo[]
+     */
+    public function partitionsForNode(Node $aNode)
+    {
+        $result = [];
+
+        foreach ($this->cluster as $topic => $partitions) {
+            foreach ($partitions as $partitionInfo) {
+                if ($partitionInfo->leader() === $aNode) {
+                    $result[] = $partitionInfo;
+                }
+            }
         }
 
-        if (!isset($this->cluster[$topic][$partition])) {
-            throw new \RuntimeException(
-                sprintf("Unknown Partition \"%d\" for Topic %s", $partition, $topic)
-            );
-        }
+        return $result;
+    }
 
-        return $this->cluster[$topic][$partition]->leader();
+    /**
+     * @param  TopicPartition            $aTopicPartition
+     * @return Node
+     * @throws \InvalidArgumentException
+     */
+    public function leaderFor(TopicPartition $aTopicPartition)
+    {
+        return $this->partitionInfoFor($aTopicPartition)->leader();
     }
 
     public function nodes()
     {
+    }
+
+    /**
+     * @param $aTopic
+     * @throws \InvalidArgumentException
+     */
+    protected function knownTopic($aTopic)
+    {
+        if (!isset($this->cluster[$aTopic])) {
+            throw new \InvalidArgumentException(sprintf("Unknown Topic \"%s\"", $aTopic));
+        }
+    }
+
+    /**
+     * @param $aTopic
+     * @param $aPartition
+     * @throws \InvalidArgumentException
+     */
+    protected function knownPartition($aTopic, $aPartition)
+    {
+        if (!isset($this->cluster[$aTopic][$aPartition])) {
+            throw new \InvalidArgumentException(sprintf("Unknown partition \"%d\" for topic \"%s\"", $aPartition, $aTopic));
+        }
     }
 }
